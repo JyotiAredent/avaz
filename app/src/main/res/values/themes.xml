@@ -1,0 +1,23 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Avaz" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="fontFamily">@font/roboto</item>
+        <item name="android:statusBarColor">@color/blue</item>
+
+    </style>
+
+    <style name="Theme.Avaz" parent="Base.Theme.Avaz" />
+    <style name="KeyboardText">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle" >bold</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+    <style name="CardKeyboard">
+        <item name="cardElevation">10dp</item>
+        <item name="cardCornerRadius">5dp</item>
+    </style>
+
+
+</resources>

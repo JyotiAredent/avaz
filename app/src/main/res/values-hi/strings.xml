@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">अवाज</string>
+    <string name="Quick">जल्दी</string>
+    <string name="GettingStarted">शुरू करना</string>
+    <string name="Languages">बोली</string>
+    <string name="Basics">बुनियादी</string>
+    <string name="Advance">अग्रिम</string>
+    <string name="CoreWords">मूल शब्द</string>
+</resources>
