@@ -13,6 +13,7 @@ import com.google.gson.JsonObject;
 import ardents.in.avaz.Activity.LoginActivity;
 import ardents.in.avaz.Activity.MainActivity;
 import ardents.in.avaz.Network.RetrofitClient;
+import ardents.in.avaz.models.RegisterModel;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -25,25 +26,21 @@ public class RegisterRepo {
     }
 
     public MutableLiveData<String> register(Context context,String name,String mail,String passwd,String age){
-        RetrofitClient.getClient().register(name,mail,passwd,age).enqueue(new Callback<JsonObject>() {
-            @Override
-            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
-                try{
-                    if (response.isSuccessful()){
-                        Log.d("register","Successful======"+response.body().toString());
-                        JsonObject jsonObject=response.body();
-                        String message=jsonObject.get("message").getAsString();
-                        Log.d("register","register"+message);
-                        Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(context, LoginActivity.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        context.startActivity(intent);
 
+        RetrofitClient.getClient().register(name,mail,passwd,age).enqueue(new Callback<RegisterModel>() {
+            @Override
+            public void onResponse(Call<RegisterModel> call, Response<RegisterModel> response) {
+                try {
+                    if (response.isSuccessful()){
+                        RegisterModel registerModel=response.body();
+                        if (registerModel!=null){
+                            Log.d("register","register"+registerModel.getMessage());
+                            Toast.makeText(context, registerModel.getMessage(), Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(context, LoginActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            context.startActivity(intent);
+                        }
                     }else {
-                        //Log.d("register","Unsuccessful======"+response.errorBody().toString());
-//                        JsonObject jsonObject=response.body();
-//                        String error=jsonObject.get("error").getAsString();
-//                        Toast.makeText(context, error, Toast.LENGTH_SHORT).show();
                         Toast.makeText(context, "This email already has been taken", Toast.LENGTH_SHORT).show();
                     }
                 }catch (Exception e){
@@ -52,11 +49,11 @@ public class RegisterRepo {
             }
 
             @Override
-            public void onFailure(Call<JsonObject> call, Throwable t) {
+            public void onFailure(Call<RegisterModel> call, Throwable t) {
                 Log.d("register","failed======"+t.getMessage());
-
             }
         });
+
         return registerresult;
     }
 }

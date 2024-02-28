@@ -5,10 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
 import ardents.in.avaz.R;
+import ardents.in.avaz.Utils.SharedPrefManager;
 import ardents.in.avaz.databinding.ActivitySplashBinding;
 
 public class SplashActivity extends AppCompatActivity {
@@ -24,10 +26,17 @@ public class SplashActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(SplashActivity.this, LoginActivity.class));
+                if (SharedPrefManager.getInstance(getApplicationContext()).userisLoggedIn()){
+                    startActivity(new Intent(SplashActivity.this, MainActivity.class));
+                }else {
+                    startActivity(new Intent(SplashActivity.this, LoginActivity.class));
+                }
+
                 finish();
             }
         },2000);
+
+
 
 
         topAnim= AnimationUtils.loadAnimation(this,R.anim.top_animation);

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -16,6 +17,7 @@ import java.util.Locale;
 import ardents.in.avaz.Fragment.HomeFragment;
 import ardents.in.avaz.Fragment.KeyboardFragment;
 import ardents.in.avaz.R;
+import ardents.in.avaz.Utils.SharedPrefManager;
 import ardents.in.avaz.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
@@ -87,155 +89,69 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-//        binding.cardQuick.setOnClickListener(new View.OnClickListener() {
+
+
+//        binding.hscrollview.addTextChangedListener(new TextWatcher() {
 //            @Override
-//            public void onClick(View view) {
-//                String toSpeak=binding.txtQuick.getText().toString();
-//                tps.speak(toSpeak,TextToSpeech.QUEUE_FLUSH,null);
-//               // Toast.makeText(MainActivity.this, toSpeak, Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//        binding.cardStarted.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                String toSpeak=binding.txtStarted.getText().toString();
-//                tps.speak(toSpeak,TextToSpeech.QUEUE_FLUSH,null);
-//                //Toast.makeText(MainActivity.this, toSpeak, Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//        binding.cardLanguage.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                String toSpeak=binding.txtLanguage.getText().toString();
-//                tps.speak(toSpeak,TextToSpeech.QUEUE_FLUSH,null);
-//               // Toast.makeText(MainActivity.this, toSpeak, Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//        binding.cardBasic.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                String toSpeak=binding.txtBasic.getText().toString();
-//                tps.speak(toSpeak,TextToSpeech.QUEUE_FLUSH,null);
-//                //Toast.makeText(MainActivity.this, toSpeak, Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//        binding.cardAdvance.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                String toSpeak=binding.txtAdvance.getText().toString();
-//                tps.speak(toSpeak,TextToSpeech.QUEUE_FLUSH,null);
-//                //Toast.makeText(MainActivity.this, toSpeak, Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//        binding.cardCore.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                String toSpeak=binding.txtCore.getText().toString();
-//                tps.speak(toSpeak,TextToSpeech.QUEUE_FLUSH,null);
-//               // Toast.makeText(MainActivity.this, toSpeak, Toast.LENGTH_SHORT).show();
-//            }
-//        });
+//            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 //
-//        binding.cardGoback.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                String toSpeak=binding.txtGoback.getText().toString();
-//                tps.speak(toSpeak,TextToSpeech.QUEUE_FLUSH,null);
-//               // Toast.makeText(MainActivity.this, toSpeak, Toast.LENGTH_SHORT).show();
 //            }
-//        });
-//        binding.cardHome.setOnClickListener(new View.OnClickListener() {
+//
 //            @Override
-//            public void onClick(View view) {
-//                String toSpeak=binding.txtHome.getText().toString();
-//                tps.speak(toSpeak,TextToSpeech.QUEUE_FLUSH,null);
-//                //Toast.makeText(MainActivity.this, toSpeak, Toast.LENGTH_SHORT).show();
+//            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//
+////                if (binding.edtSetCard.getText().toString()!=null)
+////                {
+////                    binding.cardAction.setVisibility(View.VISIBLE);
+////                }else {
+////                    binding.cardAction.setVisibility(View.GONE);
+////                }
+//
+////                if (charSequence!=null){
+////                    binding.cardAction.setVisibility(View.VISIBLE);
+////                }
 //            }
-//        });
-//        binding.cardSearch.setOnClickListener(new View.OnClickListener() {
+//
 //            @Override
-//            public void onClick(View view) {
-//                String toSpeak=binding.txtSearch.getText().toString();
-//                tps.speak(toSpeak,TextToSpeech.QUEUE_FLUSH,null);
-//                //Toast.makeText(MainActivity.this, toSpeak, Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//        binding.cardUp.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                String toSpeak=binding.txtUp.getText().toString();
-//                tps.speak(toSpeak,TextToSpeech.QUEUE_FLUSH,null);
-//                //Toast.makeText(MainActivity.this, toSpeak, Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//        binding.cardDown.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                String toSpeak=binding.txtDown.getText().toString();
-//                tps.speak(toSpeak,TextToSpeech.QUEUE_FLUSH,null);
-//                //Toast.makeText(MainActivity.this, toSpeak, Toast.LENGTH_SHORT).show();
-//            }
-//        });
-
-
-        binding.edtSetCard.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-//                if (binding.edtSetCard.getText().toString()!=null)
-//                {
-//                    binding.cardAction.setVisibility(View.VISIBLE);
-//                }else {
+//            public void afterTextChanged(Editable editable) {
+//                if (editable==null){
 //                    binding.cardAction.setVisibility(View.GONE);
 //                }
+//
+//            }
+//        });
 
-//                if (charSequence!=null){
-//                    binding.cardAction.setVisibility(View.VISIBLE);
+//        binding.cardClear.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                String toSpeak=binding.txtClear.getText().toString();
+//                tps.speak(toSpeak,TextToSpeech.QUEUE_FLUSH,null);
+//                binding.edtSetCard.setText("");
+//            }
+//        });
+//        binding.cardDelete.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                String toSpeak=binding.txtDelete.getText().toString();
+//                tps.speak(toSpeak,TextToSpeech.QUEUE_FLUSH,null);
+//                String text=binding.edtSetCard.getText().toString();
+//                if (!text.isEmpty()){
+//                    String newText=text.substring(0,text.length()-1);
+//                    binding.edtSetCard.setText(newText);
 //                }
-            }
+//
+//            }
+//        });
+//        binding.cardSpeak.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                String toSpeak=binding.edtSetCard.getText().toString();
+//                tps.speak(toSpeak,TextToSpeech.QUEUE_FLUSH,null);
+//            }
+//        });
 
-            @Override
-            public void afterTextChanged(Editable editable) {
-                if (editable==null){
-                    binding.cardAction.setVisibility(View.GONE);
-                }
 
-            }
-        });
-
-        binding.cardClear.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String toSpeak=binding.txtClear.getText().toString();
-                tps.speak(toSpeak,TextToSpeech.QUEUE_FLUSH,null);
-                binding.edtSetCard.setText("");
-            }
-        });
-        binding.cardDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String toSpeak=binding.txtDelete.getText().toString();
-                tps.speak(toSpeak,TextToSpeech.QUEUE_FLUSH,null);
-                String text=binding.edtSetCard.getText().toString();
-                if (!text.isEmpty()){
-                    String newText=text.substring(0,text.length()-1);
-                    binding.edtSetCard.setText(newText);
-                }
-
-            }
-        });
-        binding.cardSpeak.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String toSpeak=binding.edtSetCard.getText().toString();
-                tps.speak(toSpeak,TextToSpeech.QUEUE_FLUSH,null);
-            }
-        });
+        Log.d("loin","Token============="+ SharedPrefManager.getInstance(this).getToken());
     }
 
 }

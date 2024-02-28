@@ -9,7 +9,7 @@ public class RetrofitClient {
 
     public static ApiServices getClient(){
         Retrofit retrofit=new Retrofit.Builder()
-                .baseUrl("")
+                .baseUrl("https://awaz.ardents.co.in/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         return retrofit.create(ApiServices.class);

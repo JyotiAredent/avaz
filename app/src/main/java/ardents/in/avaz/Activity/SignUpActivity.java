@@ -1,8 +1,10 @@
 package ardents.in.avaz.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -17,11 +19,16 @@ public class SignUpActivity extends AppCompatActivity {
     String name,mail,password,age;
 
     ActivitySignUpBinding binding;
+    private ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding=ActivitySignUpBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        progressDialog=new ProgressDialog(SignUpActivity.this);
+        progressDialog.setMessage("Loading");
+
 
         viewModel= ViewModelProviders.of(this).get(RegisterViewModel.class);
 
@@ -45,9 +52,18 @@ public class SignUpActivity extends AppCompatActivity {
                 |!Validation.validateEditText(binding.age)){
                    return;
                 }
+               viewModel.getIsLoading().observe(SignUpActivity.this, new Observer<Boolean>() {
+                   @Override
+                   public void onChanged(Boolean isLoading) {
+                       if (isLoading){
+                           progressDialog.show();
+                       }else
+                           progressDialog.dismiss();
+
+                   }
+               });
+
                 viewModel.registerUser(getApplicationContext(),name,mail,password,age);
-
-
             }
         });
 
