@@ -46,21 +46,53 @@
         android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/login_pass"
+    <FrameLayout
         android:layout_width="279dp"
         android:layout_height="49dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_mail"
+        android:background="@drawable/edittext_bg"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="52dp"
-        android:background="@drawable/edittext_bg"
-        android:hint="Enter Your Password"
-        android:inputType="textPassword"
-        android:padding="10dp"
-        android:maxLength="8"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_mail" />
+        android:orientation="horizontal"
+        android:id="@+id/framelay_pass"
+
+
+        >
+        <EditText
+            android:id="@+id/login_pass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Enter Your Password"
+            android:backgroundTint="@color/white"
+            android:inputType="textPassword"
+            android:maxLength="8"
+            android:padding="10dp"
+            />
+        <ImageView
+            android:id="@+id/hidePasswd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_visibility_off_24"
+            android:layout_gravity="end"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="13dp"
+            />
+        <ImageView
+            android:id="@+id/showPasswd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_visibility_24"
+            android:layout_gravity="end"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="13dp"
+            android:visibility="gone"/>
+
+
+    </FrameLayout>
+
+
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/login_btn"
@@ -112,7 +144,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.935"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/login_pass" />
+        app:layout_constraintTop_toBottomOf="@id/framelay_pass" />
     <FrameLayout
         android:id="@+id/loadingLayout"
         android:layout_width="match_parent"

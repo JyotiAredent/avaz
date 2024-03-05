@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 
 import ardents.in.avaz.models.LoginModel;
 import ardents.in.avaz.models.RegisterModel;
+import ardents.in.avaz.models.User;
 
 public class SharedPrefManager {
     private static final String SHARED_PREF_NAME_USER="user";
@@ -48,19 +49,32 @@ public class SharedPrefManager {
         editor.apply();
 
     }
-    public void setToken(String token){
+    public void setToken(LoginModel loginModel){
         SharedPreferences sharedPreferences=mCtx.getSharedPreferences(SHARED_PREF_NAME_TOKEN,mCtx.MODE_PRIVATE);
         SharedPreferences.Editor editor= sharedPreferences.edit();
-        editor.putString(LOGIN_TOKEN,token);
+        editor.putString(LOGIN_TOKEN,loginModel.getToken());
+        editor.apply();
     }
     public boolean userisLoggedIn(){
         SharedPreferences sharedPreferences=mCtx.getSharedPreferences(SHARED_PREF_NAME_TOKEN,mCtx.MODE_PRIVATE);
         return sharedPreferences.getString(LOGIN_TOKEN,null)!=null;
     }
 
-    public String getToken(){
+    public LoginModel getToken(){
         SharedPreferences sharedPreferences=mCtx.getSharedPreferences(SHARED_PREF_NAME_TOKEN,mCtx.MODE_PRIVATE);
-        return sharedPreferences.getString(LOGIN_TOKEN,null);
+        return new LoginModel(sharedPreferences.getString(LOGIN_TOKEN,null));
+    }
+
+    public User getUser(){
+        SharedPreferences sharedPreferences=mCtx.getSharedPreferences(SHARED_PREF_NAME_USER,mCtx.MODE_PRIVATE);
+        return new User(
+                sharedPreferences.getString(USER_NAME,null),
+                sharedPreferences.getString(USER_EMAIL,null),
+                sharedPreferences.getString(USER_AGE,null),
+                sharedPreferences.getString(USER_CREATED_AT,null),
+                sharedPreferences.getString(USER_UPDATED_AT,null),
+                sharedPreferences.getString(USER_ID,null)
+        );
     }
 
     public void logout(){

@@ -36,25 +36,29 @@ public class LoginRepo {
                     if (response.isSuccessful()){
                         LoginModel loginModel=response.body();
                         if (loginModel!=null){
-                            SharedPrefManager.getInstance(context).setToken(loginModel.getToken());
-                            Log.d("login","token login=="+loginModel.getToken());
-                           // Log.d("login","token login=="+SharedPrefManager.getInstance(context).getToken());
+                            Log.d("login1234","loginmodel=="+loginModel);
+                            SharedPrefManager.getInstance(context).setToken(loginModel);
+                            Log.d("login1234","token login=="+loginModel.getToken());
                             Intent intent = new Intent(context, MainActivity.class);
                             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                             context.startActivity(intent);
+                            loginresult.setValue("success");
                         }
 
                     }else {
                         Toast.makeText(context, "Unauthorised", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(context, response.errorBody().toString(), Toast.LENGTH_SHORT).show();
+                        Log.d("login1234","unsuccessful=="+response.errorBody().toString());
+                        loginresult.setValue("error");
                     }
                 }catch (Exception e){
-                    Log.d("login","Exception==="+e.getMessage());
+                    Log.d("login1234","Exception==="+e.getMessage());
                 }
             }
 
             @Override
             public void onFailure(Call<LoginModel> call, Throwable t) {
-                Log.d("login","Failed==="+t.getMessage());
+                Log.d("login1234","Failed==="+t.getMessage());
             }
         });
         return loginresult;

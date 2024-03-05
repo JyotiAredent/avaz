@@ -7,6 +7,8 @@ import androidx.lifecycle.ViewModelProviders;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 
 import ardents.in.avaz.R;
@@ -32,6 +34,29 @@ public class SignUpActivity extends AppCompatActivity {
 
         viewModel= ViewModelProviders.of(this).get(RegisterViewModel.class);
 
+
+
+        binding.hidePassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int cursorPosition = binding.passwd.getSelectionStart();
+                binding.passwd.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                binding.hidePassword.setVisibility(View.GONE);
+                binding.showPassword.setVisibility(View.VISIBLE);
+                binding.passwd.setSelection(cursorPosition);
+            }
+        });
+        binding.showPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int cursorPosition = binding.passwd.getSelectionStart();
+                binding.passwd.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                binding.showPassword.setVisibility(View.GONE);
+                binding.hidePassword.setVisibility(View.VISIBLE);
+                binding.passwd.setSelection(cursorPosition);
+            }
+        });
+
         binding.login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -51,19 +76,21 @@ public class SignUpActivity extends AppCompatActivity {
                 |!Validation.validateEditText(binding.passwd)
                 |!Validation.validateEditText(binding.age)){
                    return;
+                }else {
+                    viewModel.registerUser(getApplicationContext(),name,mail,password,age).observe(SignUpActivity.this, new Observer<String>() {
+                        @Override
+                        public void onChanged(String s) {
+                            if (s.equals("success")){
+                                Validation.dismissProgressDialog();
+                            }else {
+                                Validation.dismissProgressDialog();
+                            }
+                        }
+                    });
+                    Validation.showPrograssDialog(SignUpActivity.this);
                 }
-               viewModel.getIsLoading().observe(SignUpActivity.this, new Observer<Boolean>() {
-                   @Override
-                   public void onChanged(Boolean isLoading) {
-                       if (isLoading){
-                           progressDialog.show();
-                       }else
-                           progressDialog.dismiss();
 
-                   }
-               });
 
-                viewModel.registerUser(getApplicationContext(),name,mail,password,age);
             }
         });
 

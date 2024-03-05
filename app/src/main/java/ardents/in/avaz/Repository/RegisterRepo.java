@@ -13,6 +13,7 @@ import com.google.gson.JsonObject;
 import ardents.in.avaz.Activity.LoginActivity;
 import ardents.in.avaz.Activity.MainActivity;
 import ardents.in.avaz.Network.RetrofitClient;
+import ardents.in.avaz.Utils.SharedPrefManager;
 import ardents.in.avaz.models.RegisterModel;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -34,14 +35,18 @@ public class RegisterRepo {
                     if (response.isSuccessful()){
                         RegisterModel registerModel=response.body();
                         if (registerModel!=null){
-                            Log.d("register","register"+registerModel.getMessage());
+                            Log.d("register","register"+registerModel);
+                            SharedPrefManager.getInstance(context).setUser(registerModel);
                             Toast.makeText(context, registerModel.getMessage(), Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(context, LoginActivity.class);
                             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                             context.startActivity(intent);
+                            registerresult.setValue("success");
                         }
                     }else {
                         Toast.makeText(context, "This email already has been taken", Toast.LENGTH_SHORT).show();
+                        Log.d("register1234","errormessage=="+response.errorBody());
+                        registerresult.setValue("error");
                     }
                 }catch (Exception e){
                     Log.d("register","Exception======"+e.getMessage());

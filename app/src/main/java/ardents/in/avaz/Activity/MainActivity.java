@@ -4,12 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.PopupWindow;
 import android.widget.Toast;
 
 import java.util.Locale;
@@ -18,11 +23,14 @@ import ardents.in.avaz.Fragment.HomeFragment;
 import ardents.in.avaz.Fragment.KeyboardFragment;
 import ardents.in.avaz.R;
 import ardents.in.avaz.Utils.SharedPrefManager;
+import ardents.in.avaz.Utils.TextToSpeechHelper;
 import ardents.in.avaz.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
     private TextToSpeech tps;
+    private PopupWindow mPopupWindow;
+    TextToSpeechHelper textToSpeechHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,47 +38,31 @@ public class MainActivity extends AppCompatActivity {
         binding=ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-
-        FragmentManager fragmentManager=getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.fragmentContainerView,new HomeFragment()).commit();
+        showHomeFragment();
+        initPopup();
+        textToSpeechHelper=new TextToSpeechHelper(getApplicationContext());
 
         binding.cardKeyboard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                textToSpeechHelper.speak(binding.txtKeyboard.getText().toString());
                 binding.cardKeyboard.setVisibility(View.GONE);
-                binding.cardPictures.setVisibility(View.VISIBLE);
-                FragmentManager fragmentManager=getSupportFragmentManager();
-                fragmentManager.beginTransaction().replace(R.id.fragmentContainerView,new KeyboardFragment()).commit();
-
+               binding.cardPictures.setVisibility(View.VISIBLE);
+                showPopup();
+                hideFragment();
             }
         });
+
         binding.cardPictures.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentManager fragmentManager=getSupportFragmentManager();
-                fragmentManager.beginTransaction().replace(R.id.fragmentContainerView,new HomeFragment()).commit();
+                textToSpeechHelper.speak(binding.txtPicture.getText().toString());
                 binding.cardPictures.setVisibility(View.GONE);
                 binding.cardKeyboard.setVisibility(View.VISIBLE);
+                hidePopup();
+                showHomeFragment();
             }
         });
-
-
-        tps=new TextToSpeech(this, new TextToSpeech.OnInitListener() {
-            @Override
-            public void onInit(int status) {
-                if (status == TextToSpeech.SUCCESS) {
-                    int result = tps.setLanguage(new Locale("en", "IN")); // Specify Indian English locale
-                    if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
-                        Toast.makeText(MainActivity.this, "Indian English is not supported", Toast.LENGTH_SHORT).show();
-                    }
-                } else {
-                    Toast.makeText(MainActivity.this, "Text to Speech initialization failed", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-
-
-
 //        binding.cardKeyboard.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -83,65 +75,23 @@ public class MainActivity extends AppCompatActivity {
         binding.cardMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String toSpeak=binding.txtMenu.getText().toString();
-                tps.speak(toSpeak,TextToSpeech.QUEUE_FLUSH,null);
-               // Toast.makeText(MainActivity.this, toSpeak, Toast.LENGTH_SHORT).show();
+                textToSpeechHelper.speak(binding.txtMenu.getText().toString());
             }
         });
 
 
-
-//        binding.hscrollview.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//
-////                if (binding.edtSetCard.getText().toString()!=null)
-////                {
-////                    binding.cardAction.setVisibility(View.VISIBLE);
-////                }else {
-////                    binding.cardAction.setVisibility(View.GONE);
-////                }
-//
-////                if (charSequence!=null){
-////                    binding.cardAction.setVisibility(View.VISIBLE);
-////                }
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable editable) {
-//                if (editable==null){
-//                    binding.cardAction.setVisibility(View.GONE);
-//                }
-//
-//            }
-//        });
-
-//        binding.cardClear.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                String toSpeak=binding.txtClear.getText().toString();
-//                tps.speak(toSpeak,TextToSpeech.QUEUE_FLUSH,null);
-//                binding.edtSetCard.setText("");
-//            }
-//        });
-//        binding.cardDelete.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                String toSpeak=binding.txtDelete.getText().toString();
-//                tps.speak(toSpeak,TextToSpeech.QUEUE_FLUSH,null);
-//                String text=binding.edtSetCard.getText().toString();
-//                if (!text.isEmpty()){
-//                    String newText=text.substring(0,text.length()-1);
-//                    binding.edtSetCard.setText(newText);
-//                }
-//
-//            }
-//        });
+        binding.cardClear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                textToSpeechHelper.speak(binding.txtClear.getText().toString());
+            }
+        });
+        binding.cardDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                textToSpeechHelper.speak(binding.txtDelete.getText().toString());
+            }
+        });
 //        binding.cardSpeak.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -151,7 +101,48 @@ public class MainActivity extends AppCompatActivity {
 //        });
 
 
-        Log.d("loin","Token============="+ SharedPrefManager.getInstance(this).getToken());
+       binding.cardShare.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               shareText("This is the text to share");
+           }
+       });
+    }
+    private void shareText(String text){
+        Intent shareIntent=new Intent(Intent.ACTION_SEND);
+        shareIntent.setType("text/plain");
+        shareIntent.putExtra(Intent.EXTRA_TEXT,text);
+        startActivity(Intent.createChooser(shareIntent,"Share via"));
+
+    }
+    private void initPopup(){
+        View popupView = LayoutInflater.from(this).inflate(R.layout.keyboard_popup, null);
+        mPopupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
+        mPopupWindow.setFocusable(true);
+        mPopupWindow.setBackgroundDrawable(null);
+        mPopupWindow.setTouchable(false);
+    }
+    private void showPopup() {
+        if (mPopupWindow!=null){
+            mPopupWindow.showAtLocation(binding.fragmentContainerView, Gravity.CENTER, 0, 0);
+        }
+
+
     }
 
+    private void hidePopup() {
+        if (mPopupWindow != null && mPopupWindow.isShowing()) {
+            mPopupWindow.dismiss();
+        }
+    }
+
+    // Method to show the home fragment
+    private void showHomeFragment() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.fragmentContainerView, new HomeFragment()).commit();
+    }
+    private void hideFragment(){
+        FragmentManager fragmentManager=getSupportFragmentManager();
+        fragmentManager.beginTransaction().remove(fragmentManager.findFragmentById(R.id.fragmentContainerView)).commit();
+    }
 }

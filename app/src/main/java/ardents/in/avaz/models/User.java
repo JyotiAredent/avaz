@@ -8,6 +8,15 @@ public class User{
 	private String email;
 	private String age;
 
+	public User(String updatedAt, String name, String createdAt, String id, String email, String age) {
+		this.updatedAt = updatedAt;
+		this.name = name;
+		this.createdAt = createdAt;
+		this.id = id;
+		this.email = email;
+		this.age = age;
+	}
+
 	public void setUpdatedAt(String updatedAt){
 		this.updatedAt = updatedAt;
 	}

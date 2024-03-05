@@ -3,6 +3,8 @@ package ardents.in.avaz.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,6 +31,30 @@ public class LoginActivity extends AppCompatActivity {
 
         viewModel = ViewModelProviders.of(this).get(LoginViewModel.class);
 
+
+
+
+        binding.hidePasswd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int cursorPosition = binding.loginPass.getSelectionStart();
+                binding.loginPass.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                binding.hidePasswd.setVisibility(View.GONE);
+                binding.showPasswd.setVisibility(View.VISIBLE);
+                binding.loginPass.setSelection(cursorPosition);
+            }
+        });
+        binding.showPasswd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int cursorPosition = binding.loginPass.getSelectionStart();
+                binding.loginPass.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                binding.showPasswd.setVisibility(View.GONE);
+                binding.hidePasswd.setVisibility(View.VISIBLE);
+                binding.loginPass.setSelection(cursorPosition);
+            }
+        });
+
         binding.txtRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -45,20 +71,28 @@ public class LoginActivity extends AppCompatActivity {
                 if (!Validation.validateEditText(binding.loginMail)
                         | !Validation.validateEditText(binding.loginPass)) {
                     return;
-                }
-                viewModel.getIsLoading().observe(LoginActivity.this, new Observer<Boolean>() {
-                    @Override
-                    public void onChanged(Boolean isLoading) {
-                        if (isLoading){
-                            progressDialog.show();
-                        }else {
-                            progressDialog.dismiss();
+                }else {
+                    viewModel.loginUser(getApplicationContext(),email,password).observe(LoginActivity.this, new Observer<String>() {
+                        @Override
+                        public void onChanged(String s) {
+                            if (s.equals("success")){
+                                Validation.dismissProgressDialog();
+                            }else {
+                                Validation.dismissProgressDialog();
+                            }
                         }
-                    }
+                    });
+                    Validation.showPrograssDialog(LoginActivity.this);
+                }
 
-                });
+            }
+        });
 
-                viewModel.loginUser(getApplicationContext(),email,password);
+        binding.forgotPass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent a=new Intent(LoginActivity.this, ForgetPasswordActivity.class);
+                startActivity(a);
             }
         });
 

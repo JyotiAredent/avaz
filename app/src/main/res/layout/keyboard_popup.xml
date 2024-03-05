@@ -1,0 +1,703 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="50dp">
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/header"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardQ"
+        style="@style/CardKeyboard"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="@id/header"
+        app:layout_constraintTop_toBottomOf="@id/header">
+
+        <TextView
+            style="@style/KeyboardText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="q"
+
+            />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardW"
+        style="@style/CardKeyboard"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toEndOf="@id/cardQ"
+        app:layout_constraintTop_toBottomOf="@id/header">
+
+        <TextView
+            style="@style/KeyboardText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="w"
+
+            />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardE"
+        style="@style/CardKeyboard"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toEndOf="@id/cardW"
+        app:layout_constraintTop_toBottomOf="@id/header">
+
+        <TextView
+            style="@style/KeyboardText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="E"
+
+            />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardR"
+        style="@style/CardKeyboard"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toEndOf="@id/cardE"
+        app:layout_constraintTop_toBottomOf="@id/header">
+
+        <TextView
+            style="@style/KeyboardText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="r"
+
+            />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardT"
+        style="@style/CardKeyboard"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toEndOf="@id/cardR"
+        app:layout_constraintTop_toBottomOf="@id/header">
+
+        <TextView
+            style="@style/KeyboardText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="t"
+
+            />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardY"
+        style="@style/CardKeyboard"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toEndOf="@id/cardT"
+        app:layout_constraintTop_toBottomOf="@id/header">
+
+        <TextView
+            style="@style/KeyboardText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Y"
+
+            />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardU"
+        style="@style/CardKeyboard"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toEndOf="@id/cardY"
+        app:layout_constraintTop_toBottomOf="@id/header">
+
+        <TextView
+            style="@style/KeyboardText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="u"
+
+            />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardI"
+        style="@style/CardKeyboard"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toEndOf="@id/cardU"
+        app:layout_constraintTop_toBottomOf="@id/header">
+
+        <TextView
+            style="@style/KeyboardText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="i"
+
+            />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardO"
+        style="@style/CardKeyboard"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toEndOf="@id/cardI"
+        app:layout_constraintTop_toBottomOf="@id/header">
+
+        <TextView
+            style="@style/KeyboardText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="o"
+
+            />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardP"
+        style="@style/CardKeyboard"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toEndOf="@id/cardO"
+        app:layout_constraintTop_toBottomOf="@id/header">
+
+        <TextView
+            style="@style/KeyboardText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="p"
+
+            />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardA"
+        style="@style/CardKeyboard"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="76dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/header">
+
+        <TextView
+            style="@style/KeyboardText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="a"
+
+            />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardS"
+        style="@style/CardKeyboard"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="76dp"
+        app:layout_constraintStart_toEndOf="@id/cardA"
+        app:layout_constraintTop_toBottomOf="@id/header">
+
+        <TextView
+            style="@style/KeyboardText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="s"
+
+            />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardD"
+        style="@style/CardKeyboard"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="76dp"
+        app:layout_constraintStart_toEndOf="@id/cardS"
+        app:layout_constraintTop_toBottomOf="@id/header">
+
+        <TextView
+            style="@style/KeyboardText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="d"
+
+            />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardF"
+        style="@style/CardKeyboard"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="76dp"
+        app:layout_constraintStart_toEndOf="@id/cardD"
+        app:layout_constraintTop_toBottomOf="@id/header">
+
+        <TextView
+            style="@style/KeyboardText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="F"
+
+            />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardG"
+        style="@style/CardKeyboard"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="76dp"
+        app:layout_constraintStart_toEndOf="@id/cardF"
+        app:layout_constraintTop_toBottomOf="@id/header">
+
+        <TextView
+            style="@style/KeyboardText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="g"
+
+            />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardH"
+        style="@style/CardKeyboard"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="76dp"
+        app:layout_constraintStart_toEndOf="@id/cardG"
+        app:layout_constraintTop_toBottomOf="@id/header">
+
+        <TextView
+            style="@style/KeyboardText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="h"
+
+            />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardJ"
+        style="@style/CardKeyboard"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="76dp"
+        app:layout_constraintStart_toEndOf="@id/cardH"
+        app:layout_constraintTop_toBottomOf="@id/header">
+
+        <TextView
+            style="@style/KeyboardText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="j"
+
+            />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardK"
+        style="@style/CardKeyboard"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="76dp"
+        app:layout_constraintStart_toEndOf="@id/cardJ"
+        app:layout_constraintTop_toBottomOf="@id/header">
+
+        <TextView
+            style="@style/KeyboardText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="k"
+
+            />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardL"
+        style="@style/CardKeyboard"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="76dp"
+        app:layout_constraintStart_toEndOf="@id/cardK"
+        app:layout_constraintTop_toBottomOf="@id/header">
+
+        <TextView
+            style="@style/KeyboardText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="l"
+
+            />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardChangeAlpha"
+        style="@style/CardKeyboard"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="136dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/header">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/baseline_arrow_upward_24"
+
+            />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardZ"
+        style="@style/CardKeyboard"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="136dp"
+        app:layout_constraintStart_toEndOf="@id/cardChangeAlpha"
+        app:layout_constraintTop_toBottomOf="@id/header">
+
+        <TextView
+            style="@style/KeyboardText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="z"
+
+            />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardX"
+        style="@style/CardKeyboard"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="136dp"
+        app:layout_constraintStart_toEndOf="@id/cardZ"
+        app:layout_constraintTop_toBottomOf="@id/header">
+
+        <TextView
+            style="@style/KeyboardText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="x"
+
+            />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardC"
+        style="@style/CardKeyboard"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="136dp"
+        app:layout_constraintStart_toEndOf="@id/cardX"
+        app:layout_constraintTop_toBottomOf="@id/header">
+
+        <TextView
+            style="@style/KeyboardText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="c"
+
+            />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardV"
+        style="@style/CardKeyboard"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="136dp"
+        app:layout_constraintStart_toEndOf="@id/cardC"
+        app:layout_constraintTop_toBottomOf="@id/header">
+
+        <TextView
+            style="@style/KeyboardText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="v"
+
+            />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardB"
+        style="@style/CardKeyboard"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="136dp"
+        app:layout_constraintStart_toEndOf="@id/cardV"
+        app:layout_constraintTop_toBottomOf="@id/header">
+
+        <TextView
+            style="@style/KeyboardText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="b"
+
+            />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardN"
+        style="@style/CardKeyboard"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="136dp"
+        app:layout_constraintStart_toEndOf="@id/cardB"
+        app:layout_constraintTop_toBottomOf="@id/header">
+
+        <TextView
+            style="@style/KeyboardText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="n"
+
+            />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardM"
+        style="@style/CardKeyboard"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="136dp"
+        app:layout_constraintStart_toEndOf="@id/cardN"
+        app:layout_constraintTop_toBottomOf="@id/header">
+
+        <TextView
+            style="@style/KeyboardText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="m"
+
+            />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardDel"
+        style="@style/CardKeyboard"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toEndOf="@id/cardP"
+        app:layout_constraintTop_toBottomOf="@id/header">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/baseline_clear_24"
+            app:tint="@color/black"
+
+            />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardComma"
+        style="@style/CardKeyboard"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="136dp"
+        app:layout_constraintStart_toEndOf="@id/cardM"
+        app:layout_constraintTop_toBottomOf="@id/header">
+
+        <TextView
+            style="@style/KeyboardText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text=","
+
+            />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardPoint"
+        style="@style/CardKeyboard"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="136dp"
+        app:layout_constraintStart_toEndOf="@id/cardComma"
+        app:layout_constraintTop_toBottomOf="@id/header">
+
+        <TextView
+            style="@style/KeyboardText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="."
+
+            />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardRefresh"
+        style="@style/CardKeyboard"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="136dp"
+        app:layout_constraintStart_toEndOf="@id/cardPoint"
+        app:layout_constraintTop_toBottomOf="@id/header">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/baseline_refresh_24"
+
+            />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardFavourites"
+        style="@style/CardKeyboard"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="200dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/header">
+
+        <TextView
+            style="@style/KeyboardText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Favourites"
+
+            />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardSave"
+        style="@style/CardKeyboard"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="200dp"
+        app:layout_constraintStart_toEndOf="@id/cardFavourites"
+        app:layout_constraintTop_toBottomOf="@id/header">
+
+        <TextView
+            style="@style/KeyboardText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Save"
+
+            />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardSpace"
+        style="@style/CardKeyboard"
+        android:layout_width="370dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="200dp"
+        app:layout_constraintStart_toEndOf="@id/cardSave"
+        app:layout_constraintTop_toBottomOf="@id/header">
+
+        <TextView
+            style="@style/KeyboardText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+
+            />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardNumber"
+        style="@style/CardKeyboard"
+        android:layout_width="70dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="200dp"
+        app:layout_constraintStart_toEndOf="@id/cardSpace"
+        app:layout_constraintTop_toBottomOf="@id/header">
+
+        <TextView
+            style="@style/KeyboardText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=".?123"
+
+            />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardNotification"
+        style="@style/CardKeyboard"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="200dp"
+        app:layout_constraintStart_toEndOf="@id/cardNumber"
+        app:layout_constraintTop_toBottomOf="@id/header">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/baseline_notifications_active_24" />
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
