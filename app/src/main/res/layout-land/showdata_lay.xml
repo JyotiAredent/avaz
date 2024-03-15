@@ -25,6 +25,7 @@
             android:layout_height="wrap_content"
             android:text="text"
             android:id="@+id/show_txt"
+            android:textAlignment="center"
             />
     </LinearLayout>
 

@@ -2,11 +2,13 @@ package ardents.in.avaz.Network;
 
 import com.google.gson.JsonObject;
 
+import ardents.in.avaz.models.CategoryModel;
 import ardents.in.avaz.models.ForgotPasswordModel;
 import ardents.in.avaz.models.LoginModel;
 import ardents.in.avaz.models.RegisterModel;
 import retrofit2.Call;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 
@@ -28,4 +30,7 @@ public interface ApiServices {
     Call<ForgotPasswordModel> forgotPass(
             @Query("email") String email
     );
+
+    @GET("category")
+    Call<CategoryModel> category();
 }

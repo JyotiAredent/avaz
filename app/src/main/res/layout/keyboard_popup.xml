@@ -4,16 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="50dp">
-
-
+    >
     <androidx.cardview.widget.CardView
         android:id="@+id/header"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:backgroundTint="#27000000"/>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardQ"
@@ -31,6 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="q"
+            android:id="@+id/txt_q"
 
             />
     </androidx.cardview.widget.CardView>
@@ -50,6 +50,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="w"
+            android:id="@+id/txt_w"
 
             />
     </androidx.cardview.widget.CardView>
@@ -69,6 +70,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="E"
+            android:id="@+id/txt_e"
 
             />
     </androidx.cardview.widget.CardView>
@@ -88,6 +90,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="r"
+            android:id="@+id/txt_r"
 
             />
     </androidx.cardview.widget.CardView>
@@ -107,6 +110,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="t"
+            android:id="@+id/txt_t"
 
             />
     </androidx.cardview.widget.CardView>
@@ -126,6 +130,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Y"
+            android:id="@+id/txt_y"
 
             />
     </androidx.cardview.widget.CardView>
@@ -145,6 +150,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="u"
+            android:id="@+id/txt_u"
 
             />
     </androidx.cardview.widget.CardView>
@@ -164,6 +170,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="i"
+            android:id="@+id/txt_i"
 
             />
     </androidx.cardview.widget.CardView>
@@ -183,6 +190,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="o"
+            android:id="@+id/txt_o"
 
             />
     </androidx.cardview.widget.CardView>
@@ -202,6 +210,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="p"
+            android:id="@+id/txt_p"
 
             />
     </androidx.cardview.widget.CardView>
@@ -221,6 +230,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="a"
+            android:id="@+id/txt_a"
 
             />
     </androidx.cardview.widget.CardView>
@@ -240,6 +250,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="s"
+            android:id="@+id/txt_s"
 
             />
     </androidx.cardview.widget.CardView>
@@ -259,6 +270,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="d"
+            android:id="@+id/txt_d"
 
             />
     </androidx.cardview.widget.CardView>
@@ -278,6 +290,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="F"
+            android:id="@+id/txt_f"
 
             />
     </androidx.cardview.widget.CardView>
@@ -297,6 +310,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="g"
+            android:id="@+id/txt_g"
 
             />
     </androidx.cardview.widget.CardView>
@@ -316,6 +330,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="h"
+            android:id="@+id/txt_h"
 
             />
     </androidx.cardview.widget.CardView>
@@ -335,6 +350,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="j"
+            android:id="@+id/txt_j"
 
             />
     </androidx.cardview.widget.CardView>
@@ -354,6 +370,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="k"
+            android:id="@+id/txt_k"
 
             />
     </androidx.cardview.widget.CardView>
@@ -373,6 +390,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="l"
+            android:id="@+id/txt_l"
 
             />
     </androidx.cardview.widget.CardView>
@@ -411,6 +429,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="z"
+            android:id="@+id/txt_z"
 
             />
     </androidx.cardview.widget.CardView>
@@ -430,6 +449,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="x"
+            android:id="@+id/txt_x"
 
             />
     </androidx.cardview.widget.CardView>
@@ -449,6 +469,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="c"
+            android:id="@+id/txt_c"
 
             />
     </androidx.cardview.widget.CardView>
@@ -468,6 +489,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="v"
+            android:id="@+id/txt_v"
 
             />
     </androidx.cardview.widget.CardView>
@@ -487,6 +509,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="b"
+            android:id="@+id/txt_b"
 
             />
     </androidx.cardview.widget.CardView>
@@ -506,6 +529,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="n"
+            android:id="@+id/txt_n"
 
             />
     </androidx.cardview.widget.CardView>
@@ -525,6 +549,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="m"
+            android:id="@+id/txt_m"
 
             />
     </androidx.cardview.widget.CardView>
@@ -563,8 +588,8 @@
             style="@style/KeyboardText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:text=","
+            android:id="@+id/txt_comma"
 
             />
     </androidx.cardview.widget.CardView>
@@ -584,6 +609,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="."
+            android:id="@+id/txt_dot"
 
             />
     </androidx.cardview.widget.CardView>
@@ -660,6 +686,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=""
+            android:id="@+id/txt_space"
 
             />
     </androidx.cardview.widget.CardView>

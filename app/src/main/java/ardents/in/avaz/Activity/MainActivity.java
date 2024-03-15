@@ -1,10 +1,13 @@
 package ardents.in.avaz.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
 import androidx.fragment.app.FragmentManager;
 
 
+import android.content.Context;
 import android.content.Intent;
+import android.media.AudioManager;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.text.Editable;
@@ -25,18 +28,28 @@ import ardents.in.avaz.R;
 import ardents.in.avaz.Utils.SharedPrefManager;
 import ardents.in.avaz.Utils.TextToSpeechHelper;
 import ardents.in.avaz.databinding.ActivityMainBinding;
+import ardents.in.avaz.databinding.DrawerLayoutBinding;
+import ardents.in.avaz.databinding.KeyboardPopupBinding;
 
 public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
     private TextToSpeech tps;
     private PopupWindow mPopupWindow;
     TextToSpeechHelper textToSpeechHelper;
+    DrawerLayoutBinding drawerLayoutBinding;
+    private AudioManager audioManager;
+    KeyboardPopupBinding popupBinding;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding=ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        drawerLayoutBinding=DrawerLayoutBinding.inflate(getLayoutInflater(),binding.navigation,true);
+        popupBinding=KeyboardPopupBinding.inflate(getLayoutInflater());
+
+        audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
 
         showHomeFragment();
         initPopup();
@@ -80,13 +93,13 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        binding.cardClear.setOnClickListener(new View.OnClickListener() {
+        binding.frameClear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 textToSpeechHelper.speak(binding.txtClear.getText().toString());
             }
         });
-        binding.cardDelete.setOnClickListener(new View.OnClickListener() {
+        binding.frameDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 textToSpeechHelper.speak(binding.txtDelete.getText().toString());
@@ -101,12 +114,75 @@ public class MainActivity extends AppCompatActivity {
 //        });
 
 
-       binding.cardShare.setOnClickListener(new View.OnClickListener() {
+       binding.frameShare.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
                shareText("This is the text to share");
            }
        });
+
+       binding.cardMenu.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               //binding.drawerLay.openDrawer(R.layout.drawer_layout);
+               binding.drawerLay.openDrawer(GravityCompat.END);
+           }
+       });
+
+      drawerLayoutBinding.frameEditwords.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
+              Log.d("bindingmsg","Edit Words");
+          }
+      });
+
+      drawerLayoutBinding.linearVolumeup.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
+              audioManager.adjustVolume(AudioManager.ADJUST_RAISE,AudioManager.FLAG_SHOW_UI);
+          }
+      });
+
+      drawerLayoutBinding.frameVolumedown.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
+              audioManager.adjustVolume(AudioManager.ADJUST_LOWER,AudioManager.FLAG_SHOW_UI);
+          }
+      });
+
+      drawerLayoutBinding.frameVolumemute.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
+              audioManager.adjustVolume(AudioManager.ADJUST_MUTE, AudioManager.FLAG_SHOW_UI);
+              drawerLayoutBinding.frameVolumeunmute.setVisibility(View.VISIBLE);
+              drawerLayoutBinding.frameVolumemute.setVisibility(View.GONE);
+          }
+      });
+      drawerLayoutBinding.frameVolumeunmute.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
+              audioManager.adjustVolume(AudioManager.ADJUST_UNMUTE,AudioManager.FLAG_SHOW_UI);
+              drawerLayoutBinding.frameVolumemute.setVisibility(View.VISIBLE);
+              drawerLayoutBinding.frameVolumeunmute.setVisibility(View.GONE);
+          }
+      });
+
+      drawerLayoutBinding.frameSearch.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
+              startActivity(new Intent(getApplicationContext(),SearchActivity.class));
+          }
+      });
+
+
+//      popupBinding.txtA.setOnClickListener(new View.OnClickListener() {
+//          @Override
+//          public void onClick(View view) {
+//              binding.parentLinear.addView(popupBinding.txtA.getText().toString());
+//          }
+//      });
+
+
     }
     private void shareText(String text){
         Intent shareIntent=new Intent(Intent.ACTION_SEND);
@@ -124,7 +200,7 @@ public class MainActivity extends AppCompatActivity {
     }
     private void showPopup() {
         if (mPopupWindow!=null){
-            mPopupWindow.showAtLocation(binding.fragmentContainerView, Gravity.CENTER, 0, 0);
+            mPopupWindow.showAtLocation(binding.fragmentContainerView, Gravity.CENTER, 10, 110);
         }
 
 

@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
 
     <uses-feature
         android:name="android.hardware.camera"
@@ -24,9 +25,13 @@
         android:theme="@style/Theme.Avaz"
         tools:targetApi="31">
         <activity
-            android:name=".Activity.ForgetPasswordActivity"
+            android:name=".Activity.SearchActivity"
             android:exported="false"
             android:screenOrientation="landscape"/>
+        <activity
+            android:name=".Activity.ForgetPasswordActivity"
+            android:exported="false"
+            android:screenOrientation="landscape" />
         <activity
             android:name=".Activity.SignUpActivity"
             android:exported="false"
